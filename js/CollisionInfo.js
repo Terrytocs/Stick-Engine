@@ -9,16 +9,16 @@ export default class CollisionInfo{
     this.start=new Vec2(0,0);
     this.end=this.start.add(this.normal.scale(this.depth));
   }
-  set setNormal(n){
+  setNormal(n){
     this.normal=n;
   }
-  get getNormal(){
+  getNormal(){
     return this.normal;
   }
-  set setStart(s){
+  setStart(s){
     this.start=s;
   }
-  set setInfo(d,n,s){
+  setInfo(d,n,s){
     this.depth=d;
     this.normal=n;
     this.start=s;
