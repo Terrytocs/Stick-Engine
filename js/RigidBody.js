@@ -9,8 +9,32 @@ export default class RigidBody{
     this.oldPos=pos;
     this.boundRadius=0;
     this.name=this.constructor.name;
-    this.angle=(Math.PI*1.5);
-    this.velocity=new Vec2(0,0);
+    this.ang=(Math.PI*1.5);
+    this.oldAng=this.ang;
+    this.speed=0;
+    this.vel=new Vec2(
+      Math.cos(this.ang)*this.speed,
+      Math.sin(this.ang)*this.speed
+    );
+    this.angSpeed=0;
+  }
+  update(time){
+    var vel,newPos;
+    vel=this.pos.sub(this.oldPos);
+    newPos=this.pos.add(vel).scale(time);
+    this.oldPos=this.pos;
+    this.pos=newPos;
+
+    this.pos.x+=this.vel.x;
+    this.pos.y+=this.vel.y;
+
+    var angVel,newAng;
+    angVel=this.ang-this.oldAng;
+    newAng=(this.ang+angVel)*time;
+    this.oldAng=this.ang;
+    this.ang=newAng;
+
+    this.ang+=this.angSpeed;
   }
   boundRadiusCollision(otherShape){
     var dist,radSum;
