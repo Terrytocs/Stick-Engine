@@ -24,4 +24,7 @@ export default class CollisionInfo{
     this.start=s;
     this.end=this.start.add(this.normal.scale(depth));
   }
+  changeDir(){
+    
+  }
 }
