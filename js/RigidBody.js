@@ -25,8 +25,8 @@ export default class RigidBody{
     this.oldPos=this.pos;
     this.pos=newPos;
 
-    this.pos.x+=this.vel.x;
-    this.pos.y+=this.vel.y;
+    this.pos=this.pos.add(this.vel).scale(time);
+    
 
     var angVel,newAng;
     angVel=this.ang-this.oldAng;
@@ -34,7 +34,7 @@ export default class RigidBody{
     this.oldAng=this.ang;
     this.ang=newAng;
 
-    this.ang+=this.angSpeed;
+    this.ang+=this.angSpeed*time;
   }
   boundRadiusCollision(otherShape){
     var dist,radSum;
